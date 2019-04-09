@@ -42,9 +42,4 @@ public abstract class AnAttraction implements IAttraction {
     public boolean isForDisabled() {
         return isForDisabled;
     }
-
-    @Override
-    public LocalDate needsService() {
-        return null;
-    }
 }

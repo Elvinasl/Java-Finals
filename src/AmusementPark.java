@@ -4,6 +4,7 @@
  */
 
 import Attractions.AnAttraction;
+import Attractions.IAttraction;
 import Tickets.Ticket;
 import Tickets.Visitor;
 import Tickets.Woman;
@@ -21,13 +22,13 @@ public class AmusementPark
 
     private List<Visitor> visitors;
     private String name;
-    private Attraction attraction;
+    private List<IAttraction> attractions;
 
-    public AmusementPark(String name)
+    public AmusementPark(String name, List<IAttraction> attractions)
     {
         this.name = name;
         this.visitors = new ArrayList<>();
-        this.attraction = new Attraction(new ServiceCalculator());
+        this.attractions = attractions;
     }
 
     public void addVisitor(Visitor visitor) {
@@ -57,8 +58,14 @@ public class AmusementPark
      * @param date The date of which you want to know what attractions need to be serviced
      * @return a list of attractions that need to be serviced on the supplied date
      */
-    public List<Attraction> getAttractionsToBeServiced(LocalDate date) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public List<IAttraction> getAttractionsToBeServiced(LocalDate date) {
+        List<IAttraction> attractionsToBeServiced = new ArrayList<>();
+        for(IAttraction attraction : attractions) {
+            if (attraction.needsService(date) != null && attraction.needsService(date) == date) {
+                attractionsToBeServiced.add(attraction);
+            }
+        }
+        return attractionsToBeServiced;
     }
 
     /**
@@ -107,16 +114,20 @@ public class AmusementPark
      * @param visitor the visitor that needs the list of attractions
      * @return the list of attractions that are suitable for the supplied visitor
      */
-    public List<AnAttraction> getSuitableAttraction(Visitor visitor)
+    public List<IAttraction> getSuitableAttraction(Visitor visitor)
     {
         AttractionValidator attractionValidator = new AttractionValidator();
-        List<AnAttraction> suitableAttractions = new ArrayList<>();
+        List<IAttraction> suitableAttractions = new ArrayList<>();
 
-        for (AnAttraction attraction : this.attraction.getAttractions()) {
+        for (IAttraction attraction : attractions) {
             if (attractionValidator.validate(visitor, attraction)) {
                 suitableAttractions.add(attraction);
             }
         }
         return suitableAttractions;
+    }
+
+    public List<Visitor> getVisitors() {
+        return visitors;
     }
 }

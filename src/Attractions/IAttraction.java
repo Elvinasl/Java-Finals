@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public interface IAttraction {
 
-    public LocalDate needsService();
+    public LocalDate needsService(LocalDate serviceDate);
     public int getMinAge();
     public int getMaxAge();
     public int getMinLength();
