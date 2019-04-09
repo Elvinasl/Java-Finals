@@ -1,10 +1,10 @@
-import Attractions.IAttraction;
+import Attractions.AnAttraction;
 import Tickets.Visitor;
 import Tickets.Woman;
 
 public class AttractionValidator {
     private Visitor visitor;
-    private IAttraction attraction;
+    private AnAttraction attraction;
 
     private boolean isMinAgeValid() {
         if (attraction.getMinAge() == -1) {
@@ -39,7 +39,7 @@ public class AttractionValidator {
         return !visitor.isDisabled() || attraction.isForDisabled();
     }
 
-    public boolean validate(Visitor visitor, IAttraction attraction) {
+    public boolean validate(Visitor visitor, AnAttraction attraction) {
         this.visitor = visitor;
         this.attraction = attraction;
         return isForDisabled() && isForPregnant() && isLengthValid() && isMaxAgeValid() && isMinAgeValid();

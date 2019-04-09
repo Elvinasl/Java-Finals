@@ -2,43 +2,11 @@ package Attractions;
 
 import java.time.DayOfWeek;
 
-public class RiverIsEmpty implements IAttraction {
-
-    private int minAge = -1;
-    private int maxAge = 7;
-    private int minLength = -1;
-    private boolean isForPregnant = false;
-    private boolean isForDisabled = true;
+public class RiverIsEmpty extends AnAttraction {
     private DayOfWeek dayOfService = DayOfWeek.SATURDAY;
 
-
-    @Override
-    public int getMinAge() {
-        return minAge;
+    public RiverIsEmpty() {
+        super(-1, 7, -1, false, true);
     }
 
-    @Override
-    public int getMaxAge() {
-        return maxAge;
-    }
-
-    @Override
-    public int getMinLength() {
-        return minLength;
-    }
-
-    @Override
-    public boolean isForPregnant() {
-        return isForPregnant;
-    }
-
-    @Override
-    public boolean isForDisabled() {
-        return isForDisabled;
-    }
-
-    @Override
-    public DayOfWeek getServiceDay() {
-        return dayOfService;
-    }
 }

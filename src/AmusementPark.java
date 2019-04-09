@@ -3,9 +3,7 @@
   StudentNr:
  */
 
-import Attractions.CasperGhost;
-import Attractions.IAttraction;
-import Tickets.AbstractVisitor;
+import Attractions.AnAttraction;
 import Tickets.Ticket;
 import Tickets.Visitor;
 import Tickets.Woman;
@@ -16,8 +14,6 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
-
-import static Tickets.Ticket.ADULT_PRICE;
 
 
 public class AmusementPark
@@ -111,17 +107,16 @@ public class AmusementPark
      * @param visitor the visitor that needs the list of attractions
      * @return the list of attractions that are suitable for the supplied visitor
      */
-    public List<IAttraction> getSuitableAttraction(Visitor visitor)
+    public List<AnAttraction> getSuitableAttraction(Visitor visitor)
     {
         AttractionValidator attractionValidator = new AttractionValidator();
+        List<AnAttraction> suitableAttractions = new ArrayList<>();
 
-        List<IAttraction> suitableAttractions = new ArrayList<>();
-        for (IAttraction attraction : this.attraction.getAttractions()) {
+        for (AnAttraction attraction : this.attraction.getAttractions()) {
             if (attractionValidator.validate(visitor, attraction)) {
                 suitableAttractions.add(attraction);
             }
         }
-
         return suitableAttractions;
     }
 }

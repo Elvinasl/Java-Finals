@@ -11,7 +11,7 @@ import java.util.List;
 public class Attraction {
 
     private final ServiceIntervalCalculator serviceIntervalCalculator;
-    private List<IAttraction> attractions;
+    private List<AnAttraction> attractions;
 
     /**
      * @param serviceIntervalCalculator The intervalcalculater
@@ -22,8 +22,8 @@ public class Attraction {
 
     }
 
-    private List<IAttraction> getPossibleAttractions() {
-        List<IAttraction> possibleAttractions = new ArrayList<>();
+    private List<AnAttraction> getPossibleAttractions() {
+        List<AnAttraction> possibleAttractions = new ArrayList<>();
         possibleAttractions.add(new CasperGhost());
         possibleAttractions.add(new FloatingPoint());
         possibleAttractions.add(new JUnity());
@@ -33,7 +33,7 @@ public class Attraction {
         return possibleAttractions;
     }
 
-    public List<IAttraction> getAttractions(){
+    public List<AnAttraction> getAttractions(){
         return attractions;
     }
 

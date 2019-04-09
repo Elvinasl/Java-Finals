@@ -1,44 +1,17 @@
 package Attractions;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 
-public class FloatingPoint implements IAttraction {
-
-    private int minAge = 16;
-    private int maxAge = -1;
-    private int minLength = -1;
-    private boolean isForPregnant = false;
-    private boolean isForDisabled = true;
+public class FloatingPoint extends AnAttraction {
 
 
-    @Override
-    public int getMinAge() {
-        return minAge;
+    public FloatingPoint() {
+        super(16, -1, -1, false, true);
     }
 
     @Override
-    public int getMaxAge() {
-        return maxAge;
-    }
-
-    @Override
-    public int getMinLength() {
-        return minLength;
-    }
-
-    @Override
-    public boolean isForPregnant() {
-        return isForPregnant;
-    }
-
-    @Override
-    public boolean isForDisabled() {
-        return isForDisabled;
-    }
-
-    @Override
-    public DayOfWeek getServiceDay() {
-        // every two days
-        return DayOfWeek.of(2);
+    public LocalDate needsService() {
+        return null;
     }
 }
