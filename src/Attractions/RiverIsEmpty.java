@@ -12,12 +12,14 @@ public class RiverIsEmpty extends AnAttraction {
     }
 
     @Override
-    public LocalDate needsService(LocalDate serviceDate) {
-        if(serviceDate.getDayOfWeek().equals(dayOfService)) {
-            // its service date!
-            return serviceDate;
-        }
-        // returns upcoming friday
-        return LocalDate.now().with(TemporalAdjusters.next(dayOfService));
+    public boolean needsService(LocalDate serviceDate) {
+        // returns true if given date is saturday
+        return serviceDate.getDayOfWeek().equals(dayOfService);
+    }
+
+    @Override
+    public boolean needsService() {
+        // true if today is saturday
+        return LocalDate.now().getDayOfWeek().equals(dayOfService);
     }
 }

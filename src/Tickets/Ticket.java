@@ -1,7 +1,6 @@
 package Tickets;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Name:

@@ -1,4 +1,3 @@
-import Attractions.AnAttraction;
 import Attractions.IAttraction;
 import Tickets.Visitor;
 import Tickets.Woman;

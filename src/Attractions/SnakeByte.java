@@ -13,12 +13,14 @@ public class SnakeByte extends AnAttraction {
     }
 
     @Override
-    public LocalDate needsService(LocalDate serviceDate) {
-        if(serviceDate.getDayOfWeek().equals(dayOfService)) {
-            // its today!
-            return serviceDate;
-        }
-        // returns upcoming monday
-        return LocalDate.now().with(TemporalAdjusters.next(dayOfService));
+    public boolean needsService(LocalDate serviceDate) {
+        // returns true if given date is monday
+        return serviceDate.getDayOfWeek().equals(dayOfService);
+    }
+
+    @Override
+    public boolean needsService() {
+        // true if today is monday
+        return LocalDate.now().getDayOfWeek().equals(dayOfService);
     }
 }

@@ -1,9 +1,6 @@
 package Attractions;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-
-public abstract class AnAttraction implements IAttraction {
+public abstract class AnAttraction implements IAttraction, ServiceIntervalCalculator {
     private int minAge;
     private int maxAge;
     private int minLength;

@@ -11,7 +11,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        List<IAttraction> possibleAttractions = new ArrayList<>();
+        List<AnAttraction> possibleAttractions = new ArrayList<>();
         possibleAttractions.add(new CasperGhost());
         possibleAttractions.add(new FloatingPoint());
         possibleAttractions.add(new JUnity());

@@ -28,7 +28,7 @@ public class AmusementParkTest
      */
     public AmusementParkTest()
     {
-        List<IAttraction> possibleAttractions = new ArrayList<>();
+        List<AnAttraction> possibleAttractions = new ArrayList<>();
         possibleAttractions.add(new CasperGhost());
         possibleAttractions.add(new FloatingPoint());
         possibleAttractions.add(new JUnity());

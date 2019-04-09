@@ -7,9 +7,9 @@ package Tickets;
 
 public interface Visitor
 {
-    public int getLength();
-    public int getAge();
-    public boolean isDisabled();
+    int getLength();
+    int getAge();
+    boolean isDisabled();
     Ticket getTicket();
     void setTicket(Ticket ticket);
 }

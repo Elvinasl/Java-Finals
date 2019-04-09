@@ -7,23 +7,31 @@ public class FloatingPoint extends AnAttraction {
     // every three days
     private LocalDate lastServiceMade = null;
 
-    private void serviceCompleted() {
-        lastServiceMade = LocalDate.now();
-    }
-
     public FloatingPoint() {
         super(16, -1, -1, false, true);
     }
 
     @Override
-    public LocalDate needsService(LocalDate serviceDate) {
+    public boolean needsService(LocalDate serviceDate) {
+        // returns true if given date is the date for service
+        return serviceDate.equals(LocalDate.of(getDateOfService().getYear(), getDateOfService().getMonth(), getDateOfService().getDayOfMonth()));
+    }
+
+    @Override
+    public boolean needsService() {
+        return LocalDate.now().equals(getDateOfService());
+    }
+
+    private LocalDate getDateOfService() {
         if(lastServiceMade == null) {
             // service was never done, do it now
             serviceCompleted();
         }
+        // last day of service + 3 days
+        return lastServiceMade.plusDays(3);
+    }
 
-        // last day of service + 2 days
-        LocalDate dateOfService = lastServiceMade.plusDays(2);
-        return LocalDate.of(dateOfService.getYear(), dateOfService.getMonth(), dateOfService.getDayOfMonth());
+    private void serviceCompleted() {
+        lastServiceMade = LocalDate.now();
     }
 }

@@ -9,12 +9,11 @@ import Tickets.Ticket;
 import Tickets.Visitor;
 import Tickets.Woman;
 
-import java.lang.UnsupportedOperationException;
+import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
 
 
 public class AmusementPark
@@ -23,9 +22,9 @@ public class AmusementPark
     private static final int CHILD_AGE = 7;
     private List<Visitor> visitors;
     private String name;
-    private List<IAttraction> attractions;
+    private List<AnAttraction> attractions;
 
-    public AmusementPark(String name, List<IAttraction> attractions)
+    public AmusementPark(String name, List<AnAttraction> attractions)
     {
         this.name = name;
         this.visitors = new ArrayList<>();
@@ -59,12 +58,10 @@ public class AmusementPark
      * @param date The date of which you want to know what attractions need to be serviced
      * @return a list of attractions that need to be serviced on the supplied date
      */
-    public List<IAttraction> getAttractionsToBeServiced(LocalDate date) {
-        List<IAttraction> attractionsToBeServiced = new ArrayList<>();
-        for(IAttraction attraction : attractions) {
-            LocalDate serviceDate = attraction.needsService(date);
-            if (serviceDate != null && serviceDate.equals(date)){
-                // attraction needs a service
+    public List<AnAttraction> getAttractionsToBeServiced(LocalDate date) {
+        List<AnAttraction> attractionsToBeServiced = new ArrayList<>();
+        for(AnAttraction attraction : attractions) {
+            if(attraction.needsService(date)) {
                 attractionsToBeServiced.add(attraction);
             }
         }

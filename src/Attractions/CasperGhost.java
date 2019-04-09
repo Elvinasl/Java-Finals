@@ -10,7 +10,12 @@ public class CasperGhost extends AnAttraction {
     }
 
     @Override
-    public LocalDate needsService(LocalDate serviceDate) {
-        return null;
+    public boolean needsService(LocalDate serviceDate) {
+        return false;
+    }
+
+    @Override
+    public boolean needsService() {
+        return false;
     }
 }

@@ -7,24 +7,31 @@ public class Octabahn extends AnAttraction {
     // every two days
     private LocalDate lastServiceMade = null;
 
-    private void serviceCompleted() {
-        lastServiceMade = LocalDate.now();
-    }
-
-
     public Octabahn() {
         super(6, 12, -1, false, false);
     }
 
     @Override
-    public LocalDate needsService(LocalDate serviceDate) {
+    public boolean needsService(LocalDate serviceDate) {
+        // returns true if given date is the date for service
+        return serviceDate.equals(LocalDate.of(getDateOfService().getYear(), getDateOfService().getMonth(), getDateOfService().getDayOfMonth()));
+    }
+
+    @Override
+    public boolean needsService() {
+        return LocalDate.now().equals(getDateOfService());
+    }
+
+    private LocalDate getDateOfService() {
         if(lastServiceMade == null) {
             // service was never done, do it now
             serviceCompleted();
         }
+        // last day of service + 2 days
+        return lastServiceMade.plusDays(2);
+    }
 
-        // last day of service + 3 days
-        LocalDate dateOfService = lastServiceMade.plusDays(3);
-        return LocalDate.of(dateOfService.getYear(), dateOfService.getMonth(), dateOfService.getDayOfMonth());
+    private void serviceCompleted() {
+        lastServiceMade = LocalDate.now();
     }
 }
