@@ -5,6 +5,8 @@
 
 import Attractions.CasperGhost;
 import Attractions.IAttraction;
+import Tickets.AbstractVisitor;
+import Tickets.Ticket;
 import Tickets.Visitor;
 import Tickets.Woman;
 
@@ -14,6 +16,8 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
+
+import static Tickets.Ticket.ADULT_PRICE;
 
 
 public class AmusementPark
@@ -32,6 +36,24 @@ public class AmusementPark
 
     public void addVisitor(Visitor visitor) {
         visitors.add(visitor);
+    }
+
+    public void addVisitors(List<Visitor> visitors) {
+        Visitor cheapestVisitor = visitors.get(0);
+
+        for (Visitor visitor : visitors) {
+            Ticket newTicket = new Ticket(visitor);
+            visitor.setTicket(newTicket);
+
+            if (newTicket.getPrice() < cheapestVisitor.getTicket().getPrice()) {
+                cheapestVisitor = visitor;
+            }
+            this.visitors.add(visitor);
+        }
+
+        if(visitors.size() >= 5) {
+            cheapestVisitor.getTicket().setFreeTicket();
+        }
     }
 
     /**

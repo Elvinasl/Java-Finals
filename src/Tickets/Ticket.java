@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Ticket
 {
-    private static final int ADULT_PRICE = 25;
+    public static final int ADULT_PRICE = 25;
     private static final int CHILDREN_PRICE = 15;
     private static final int SHORT_PERSON_PRICE = 10;
 
@@ -24,22 +24,6 @@ public class Ticket
         this.price = calcPrice(visitor.getLength(), visitor.getAge());
     }
 
-    public Ticket(List<Visitor> visitors) {
-
-        int totalPrice = 0;
-        int cheapestPrice = ADULT_PRICE;
-        for (Visitor visitor : visitors) {
-            int price = calcPrice(visitor.getLength(), visitor.getAge());
-            totalPrice += price;
-
-            if (price < cheapestPrice) {
-                cheapestPrice = price;
-            }
-        }
-
-        this.price = totalPrice - cheapestPrice;
-    }
-
     private int calcPrice(int length, int age) {
         if (length <= SHORT_PERSON) {
             return SHORT_PERSON_PRICE;
@@ -49,6 +33,10 @@ public class Ticket
             return CHILDREN_PRICE;
         }
         return ADULT_PRICE;
+    }
+
+    public void setFreeTicket() {
+        price = 0;
     }
 
     public int getPrice() {

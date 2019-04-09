@@ -9,4 +9,5 @@ public interface IAttraction {
     public boolean isForPregnant();
     public boolean isForDisabled();
     public DayOfWeek getServiceDay();
+//    public void serviceCompleted();
 }

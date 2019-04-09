@@ -11,4 +11,5 @@ public interface Visitor
     public int getAge();
     public boolean isDisabled();
     Ticket getTicket();
+    void setTicket(Ticket ticket);
 }

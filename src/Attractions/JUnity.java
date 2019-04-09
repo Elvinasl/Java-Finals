@@ -1,6 +1,7 @@
 package Attractions;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class JUnity implements IAttraction {
 
@@ -9,6 +10,7 @@ public class JUnity implements IAttraction {
     private int minLength = 135;
     private boolean isForPregnant = false;
     private boolean isForDisabled = false;
+    private DayOfWeek lastServiceMade = DayOfWeek.MONDAY;
     private DayOfWeek dayOfService = DayOfWeek.FRIDAY;
 
 
@@ -41,4 +43,9 @@ public class JUnity implements IAttraction {
     public DayOfWeek getServiceDay() {
         return dayOfService;
     }
+
+//    @Override
+//    public void serviceCompleted() {
+//        lastServiceMade = LocalDate.now().getDayOfWeek();
+//    }
 }
