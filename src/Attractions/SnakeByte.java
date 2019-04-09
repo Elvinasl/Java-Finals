@@ -16,7 +16,7 @@ public class SnakeByte extends AnAttraction {
     public LocalDate needsService(LocalDate serviceDate) {
         if(serviceDate.getDayOfWeek().equals(dayOfService)) {
             // its today!
-            return LocalDate.now();
+            return serviceDate;
         }
         // returns upcoming monday
         return LocalDate.now().with(TemporalAdjusters.next(dayOfService));

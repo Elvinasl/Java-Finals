@@ -21,7 +21,6 @@ public class Octabahn extends AnAttraction {
         if(lastServiceMade == null) {
             // service was never done, do it now
             serviceCompleted();
-            return LocalDate.now();
         }
 
         // last day of service + 3 days

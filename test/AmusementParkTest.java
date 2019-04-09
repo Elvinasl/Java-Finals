@@ -12,15 +12,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class AmusementParkTest
 {
     private AmusementPark amusementPark;
+    private static final Year THIS_YEAR = Year.of(LocalDate.now().getYear());
+    private static final Month THIS_MONTH = LocalDate.now().getMonth();
     /**
      * Default constructor for test class AmusementParkTest
      */
@@ -112,21 +114,36 @@ public class AmusementParkTest
     @Test
     void getRevenuePerMonthTest()
     {
-        fail("This test is not implemented yet!");
+        Man men1 = new Man(180, 22, false);
+        Man men2 = new Man(190, 33, false);
+
+        Ticket ticket = new Ticket(men1);
+        men1.setTicket(ticket);
+
+        Ticket ticket2 = new Ticket(men2);
+        men2.setTicket(ticket2);
+
+        amusementPark.addVisitor(men1);
+        amusementPark.addVisitor(men2);
+
+        assert (amusementPark.getRevenuePerMonth(THIS_MONTH, THIS_YEAR) == 50);
     }
 
     @Test
     void getAmountOfChildrenPerMonthTest()
     {
+        Woman woman1 = new Woman(160, 5, false, false);
+        Woman woman2 = new Woman(160, 6, false, true);
 
-//        Woman woman1 = new Woman(160, 20, true, false);
-//        Woman woman2 = new Woman(160, 15, false, true);
-//
-//        Ticket ticket3 = new Ticket(woman1);
-//        woman1.setTicket(ticket3);
-//
-//        Ticket ticket4 = new Ticket(woman2);
-//        woman2.setTicket(ticket4);
-        fail("This test is not implemented yet!");
+        Ticket ticket3 = new Ticket(woman1);
+        woman1.setTicket(ticket3);
+
+        Ticket ticket4 = new Ticket(woman2);
+        woman2.setTicket(ticket4);
+
+        amusementPark.addVisitor(woman1);
+        amusementPark.addVisitor(woman2);
+
+        assert (amusementPark.getAmountOfChildrenPerMonth(THIS_MONTH, THIS_YEAR) == 2);
     }
 }

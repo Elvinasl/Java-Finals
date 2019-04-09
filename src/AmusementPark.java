@@ -20,6 +20,7 @@ import java.time.LocalDate;
 public class AmusementPark
 {
 
+    private static final int CHILD_AGE = 7;
     private List<Visitor> visitors;
     private String name;
     private List<IAttraction> attractions;
@@ -61,7 +62,9 @@ public class AmusementPark
     public List<IAttraction> getAttractionsToBeServiced(LocalDate date) {
         List<IAttraction> attractionsToBeServiced = new ArrayList<>();
         for(IAttraction attraction : attractions) {
-            if (attraction.needsService(date) != null && attraction.needsService(date) == date) {
+            LocalDate serviceDate = attraction.needsService(date);
+            if (serviceDate != null && serviceDate.equals(date)){
+                // attraction needs a service
                 attractionsToBeServiced.add(attraction);
             }
         }
@@ -76,7 +79,14 @@ public class AmusementPark
      */
     public int getRevenuePerMonth(Month month, Year year)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        int ravenue = 0;
+        for(Visitor visitor : visitors) {
+            LocalDate ticketDate = visitor.getTicket().getPurchaseDate();
+            if(ticketDate.getMonth().equals(month) &&  Year.of(ticketDate.getYear()).equals(year)) {
+                ravenue += visitor.getTicket().getPrice();
+            }
+        }
+        return ravenue;
     }
 
     /**
@@ -87,7 +97,17 @@ public class AmusementPark
      */
     public int getAmountOfChildrenPerMonth(Month month, Year year)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        int amountOfChildren = 0;
+        for(Visitor visitor : visitors) {
+            if(visitor.getAge() <= CHILD_AGE) {
+                // this visitor is a child
+                LocalDate childTicketDate = visitor.getTicket().getPurchaseDate();
+                if(childTicketDate.getMonth().equals(month) &&  Year.of(childTicketDate.getYear()).equals(year)) {
+                    amountOfChildren++;
+                }
+            }
+        }
+        return amountOfChildren;
     }
 
     /**

@@ -14,8 +14,8 @@ public class RiverIsEmpty extends AnAttraction {
     @Override
     public LocalDate needsService(LocalDate serviceDate) {
         if(serviceDate.getDayOfWeek().equals(dayOfService)) {
-            // its today!
-            return LocalDate.now();
+            // its service date!
+            return serviceDate;
         }
         // returns upcoming friday
         return LocalDate.now().with(TemporalAdjusters.next(dayOfService));

@@ -15,8 +15,8 @@ public class JUnity extends AnAttraction {
     @Override
     public LocalDate needsService(LocalDate serviceDate) {
         if(serviceDate.getDayOfWeek().equals(dayOfService)) {
-            // its today!
-            return LocalDate.now();
+            // its selected date!
+            return serviceDate;
         }
         // returns upcoming friday
         return LocalDate.now().with(TemporalAdjusters.next(dayOfService));
