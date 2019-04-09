@@ -1,4 +1,4 @@
-Attention: Please read the whole exam before answering the questions!
+UML: https://www.lucidchart.com/invitations/accept/0cc07405-fc24-456c-a519-e5d6eb4926ee
 Casus: Amusement Park “Java World!”
 
 Amusement park Java World! has asked for a system that keeps track of their visitors. The system should let the visitors know what price they must pay to get into the park. 
