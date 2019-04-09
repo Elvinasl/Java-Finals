@@ -18,12 +18,14 @@ JUnity	6	-	135	X	X
 Floating point	16	-	-	X	V
 River.isEmpty()	-	7	-	N/A	V
 
+
 ASSIGNMENT 1 (40PT):
 Implement the system as it is described above. Besides the necessary concrete classes, use at least one interface and at least one abstract class. Make use of the code that is already supplied!
 
 Write a main class that uses the other classes in the system. 
 
 Be aware: you are not allowed to use System.out.println statements in any other class than the main class.
+
 ASSIGNMENT 2 (20PT):
 Due to an accident at the Rafting Coarse “River.isEmpty()”, a buffer overflow, there is decided that there is a maintenance interval needed for the attractions. The system should return a list of attractions that need maintenance today, or at a certain date. 
 The following intervals are specified: 
@@ -33,13 +35,17 @@ The following intervals are specified:
 •	JUnity, every Friday;
 •	Floating point, every three days;
 •	River.isEmpty, every Saturday.
+
 ASSIGNMENT 3 (20PT):
 The management of the amusement park would like to see the revenue per month. 
 and wants to see how many children there were in the park during a certain month. Make use of the empty functions that are already supplied.
+
 ASSIGNMENT 4 (5PT):
 Because of the number of pregnant women that visit the amusement park, a baby buggy producer wants to know the average length of the pregnant women that visit the park. Make use of the empty function that is already supplied. 
+
 ASSIGNMENT 5 (5PT):
 To make the amusement park more customer friendly, the amusement park wants to provide a list of suitable attractions when a visitor buys a ticket. Make use of the empty function that is already supplied.
+
 ASSIGNMENT 6 (10PT):
 Write a jUnit test class for assignment 4 and 5. 
 
